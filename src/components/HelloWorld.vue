@@ -7,12 +7,17 @@ import { Filter, Operators } from "@progress/kendo-vue-data-tools";
 import { filterBy } from "@progress/kendo-data-query";
 import '@progress/kendo-theme-default/dist/all.css';
 let user = ref({});
+
+// sweetalert injection
 const swal = inject('$swal');
+
+//vee-validate by yup
 const schema = Yup.object().shape({
     name: Yup.string().required('Name is required'),
     age: Yup.number().required().positive().integer('Please enter valid age'),
     email: Yup.string().required('Email is required').email('Please enter valid email')
 });
+
 const showForm = ref(false);
 const editId = ref(null);
 const onDataBound = ref([
@@ -63,6 +68,9 @@ const deleteHandler = (row) => {
                 if(onDataBoundLoopVal.id === row.id) {
                   onDataBound.value.splice(index, 1);
                 }
+              })
+              onDataBound.value.map((onDataBoundLoopVal, index) => {  
+                onDataBound.value[index].id = index + 1;
               })
               swal.fire({
                 title: "Great!",
@@ -237,6 +245,3 @@ async function saveData(values) {
     </div>
   </div>
 </template>
-
-<style scoped>
-</style>
