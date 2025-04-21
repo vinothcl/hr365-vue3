@@ -210,7 +210,7 @@ async function saveData(values) {
     </transition>
     </div>
     <!-- Add button -->
-    <div style="text-align: center;margin-bottom: 20px;">
+    <div style="text-align: left;margin-bottom: 20px;">
       <button @click="addNew" style="background:green;padding:5px 40px;color:#ffffff;cursor: pointer;border-radius:5px;border:1px solid green;">
         Add
       </button>
