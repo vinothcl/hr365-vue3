@@ -80,14 +80,14 @@ const editHandler = (row) => {
     user.value = row;
     showForm.value = true;
 }
-const filter = {
+const filter = ref({
         logic: "and",
         filters: [
           { field: "name", operator: "contains", value: "" },
           { field: "age", operator: "contains", value: "" },
           { field: "email", operator: "contains", value: "" },
         ],
-      };
+      });
 const fields = [
         {
           name: "id",
@@ -163,6 +163,7 @@ async function saveData(values) {
 <template>
   <div>
     <div class="container">
+      <h3>Vue.js 2 to vue.js 3 Migration</h3><br>
     <!-- Modal for Edit and Add -->
     <transition name="modal" v-if="showForm">
       <div class="modal" style="display: block">
